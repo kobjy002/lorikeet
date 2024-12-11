@@ -190,13 +190,15 @@ impl RunType {
         };
 
         //Default Return
-        Outcome {
+        // Outcome {
+        return Outcome {
             output: output_opt,
             error: error_opt,
             duration: start.elapsed(),
             on_fail_output,
             on_fail_error,
-        }
+        // }
+        };
     }
 
     async fn run(&self) -> Result<String, String> {
