@@ -16,6 +16,7 @@ pub fn create_graph(steps: &[Step]) -> Result<GraphMap<usize, Require, petgraph:
             // let dep_index = steps.iter().position(|step| &step.name == dep).ok_or_else(|| anyhow!("Could not build step graph: `{}` can not be found. defined from step run type on `{}`", dep, steps[i].name))?;
             // graph.add_edge(dep_index, i, Require);
             let dep_index = steps.iter().position(|ref step| &step.name == dep).ok_or_else(|| anyhow!("Could not build step graph: `{}` can not be found. defined from step run type on `{}`", dep, steps[i].name))?;
+            graph.add_edge(dep_index, i, Require);
         }
 
         for dep in steps[i].require.iter() {
